@@ -10,6 +10,8 @@ from online_ops import find_my_ip, search_on_wikipedia, play_on_youtube, search_
 from cities_game import cities
 from interactive import magicball
 
+SPEECH_PAUSE_THRESHOLD_SECONDS = 2
+
 engine = pyttsx3.init('sapi5')
 
 #rate
@@ -47,7 +49,7 @@ def take_user_input(assistant_name="мира"):
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print('Ожидаю активации...')
-        r.pause_threshold = 2
+        r.pause_threshold = SPEECH_PAUSE_THRESHOLD_SECONDS
         audio = r.listen(source)
         
     try:
