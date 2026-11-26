@@ -1,6 +1,6 @@
 import os
 import subprocess as sp
-from path_add import find_file_pathlib, file_add, check_json
+from path_add import PATHS_JSON_FILENAME, find_file_pathlib, file_add, check_json
 from time import sleep
 import json
 
@@ -18,9 +18,9 @@ def open_file(file_path):
 def file_opening():
     check_json()
     name = input('Enter program name: ').capitalize() + '.exe'
-    with open('paths.json', 'r', encoding='utf8') as file:
+    with open(PATHS_JSON_FILENAME, 'r', encoding='utf8') as file:
         paths = json.load(file)
-        file_data = search_in_file('paths.json', name)
+        file_data = search_in_file(PATHS_JSON_FILENAME, name)
         if file_data == True:
             open_file(paths[name])
         else:
@@ -29,7 +29,7 @@ def file_opening():
                     file_add(name, path='C:/')
                     print('File added succefully!')
                     sleep(1)
-                    with open('paths.json', 'r', encoding='utf8') as f:
+                    with open(PATHS_JSON_FILENAME, 'r', encoding='utf8') as f:
                         paths = json.load(f)
                     open_file(paths[name])
                 except Exception:
