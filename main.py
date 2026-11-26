@@ -34,14 +34,14 @@ def speak(text):
 #greetings
 def greetings():
     hour = datetime.now().hour
-    if (hour >= 6) and (hour <= 12):
-        speak(f'Доброе утро, сэр')
-    elif (hour > 12) and (hour <= 18):
-        speak(f'Добрый день, сэр')
-    elif (hour > 18) and (hour <= 21):
-        speak(f'Добрый вечер, сэр')
-    elif (hour > 21) or (hour < 6):
+    if hour < 6 or hour > 21:
         speak(f'Доброй ночи, сэр')
+    elif hour <= 12:
+        speak(f'Доброе утро, сэр')
+    elif hour <= 18:
+        speak(f'Добрый день, сэр')
+    else:
+        speak(f'Добрый вечер, сэр')
     speak(f'Я голосовой ассистент Мира, чем могу вам помочь?')
     
 
